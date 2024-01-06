@@ -1,0 +1,6 @@
+{
+  "name": "py-ts-rust",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "py-ts-rust",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}"
+}

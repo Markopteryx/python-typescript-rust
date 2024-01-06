@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  py-ts-rust:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - ../..:/workspaces:cached
+    command: sleep infinity
