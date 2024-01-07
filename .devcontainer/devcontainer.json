@@ -2,5 +2,14 @@
   "name": "py-ts-rust",
   "dockerComposeFile": "docker-compose.yml",
   "service": "py-ts-rust",
-  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}"
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "charliermarsh.ruff",
+        "rust-lang.rust-analyzer",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  }
 }

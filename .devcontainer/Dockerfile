@@ -6,8 +6,8 @@ RUN curl https://sh.rustup.rs/ -sSf | sh -s -- -y
 
 RUN pip install poetry
 
-COPY leetcode/python/pyproject.toml .
+COPY python/pyproject.toml .
 
-COPY leetcode/python/poetry.loc[k] .
+COPY python/poetry.loc[k] .
 
 RUN poetry config virtualenvs.create false && poetry install --no-interaction
