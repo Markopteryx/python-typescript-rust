@@ -1,8 +1,7 @@
 {
-  "name": "leetcode",
+  "name": "anything",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,7 +9,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "prettier": "3.1.1",
+    "@biomejs/biome": "1.5.3",
+    "@types/node": "^20.11.16",
+    "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   }
 }

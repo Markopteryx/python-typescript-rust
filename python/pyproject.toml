@@ -1,14 +1,23 @@
 [tool.poetry]
-name = "leetcode"
+name = "anything"
 version = "0.1.0"
 description = ""
-authors = ["Sébastien Eustace <sebastien@eustace.io>"]
+authors = ["Marko Uksanovic <marko.uksanovic1@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
 ruff = "^0.1.11"
 
+[tool.pyright]
+include = ["src"]
+typeCheckingMode = "strict"
+pythonVersion = "3.12"
+
+[tool.ruff]
+line-length = 120
+indent-width = 4
+select = ['ALL']
 
 [build-system]
 requires = ["poetry-core"]

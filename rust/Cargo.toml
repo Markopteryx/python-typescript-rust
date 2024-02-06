@@ -1,6 +1,10 @@
 [package]
-name = "leetcode"
+name = "something"
 version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+aws-config = "1.1.4"
+aws-sdk-s3 = "1.14.0"
+polars = { version = "0.37.0", features = ["lazy", "aws", "parquet"] }
+tokio = { version = "1.36.0", features = ["full"] }

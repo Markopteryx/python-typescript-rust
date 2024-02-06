@@ -7,9 +7,20 @@
     "vscode": {
       "extensions": [
         "charliermarsh.ruff",
+        "esbenp.prettier-vscode",
+        "exodiusstudios.comment-anchors",
+        "GitHub.copilot",
+        "GitLab.gitlab-workflow",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "tamasfe.even-better-toml",
+        "vscode-icons-team.vscode-icons",
+        "yoavbls.pretty-ts-errors",
         "rust-lang.rust-analyzer",
-        "esbenp.prettier-vscode"
+        "serayuzgur.crates",
+        "biomejs.biome"
       ]
     }
-  }
+  },
+  "postCreateCommand": ".devcontainer/postCreateCommand.sh"
 }
