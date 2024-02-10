@@ -6,8 +6,7 @@ use std::error::Error;
 const BUCKET: &str = "rust-s3";
 const OBJECT_KEY: &str = "foods1.csv";
 
-#[tokio::main]
-async fn main() -> Result<(), Box<dyn Error>> {
+pub async fn get_data_from_s3() -> Result<DataFrame, Box<dyn Error + Send + Sync>> {
     // Load AWS configuration and create an S3 client
     let region_provider = RegionProviderChain::default_provider().or_else("ap-southeast-2");
     let config = aws_config::defaults(BehaviorVersion::latest())
@@ -36,6 +35,5 @@ async fn main() -> Result<(), Box<dyn Error>> {
         .infer_schema(None)
         .finish()?;
 
-    println!("{:?}", df);
-    Ok(())
+    Ok(df)
 }

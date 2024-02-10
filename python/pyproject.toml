@@ -7,6 +7,11 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
+pandas = "^2.2.0"
+pytest = "^8.0.0"
+polars = "^0.20.7"
+
+[tool.poetry.dev-dependencies]
 ruff = "^0.1.11"
 
 [tool.pyright]
@@ -17,7 +22,8 @@ pythonVersion = "3.12"
 [tool.ruff]
 line-length = 120
 indent-width = 4
-select = ['ALL']
+ignore = ['F401']
+# select = ["ALL"]
 
 [build-system]
 requires = ["poetry-core"]

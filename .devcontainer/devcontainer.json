@@ -18,7 +18,8 @@
         "yoavbls.pretty-ts-errors",
         "rust-lang.rust-analyzer",
         "serayuzgur.crates",
-        "biomejs.biome"
+        "biomejs.biome",
+        "4ops.terraform"
       ]
     }
   },

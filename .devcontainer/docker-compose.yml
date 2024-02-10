@@ -9,3 +9,5 @@ services:
       - ../..:/workspaces:cached
       - C:\Users\Marko\.aws:/root/.aws
     command: sleep infinity
+    environment:
+      WATCHPACK_POLLING: "true"

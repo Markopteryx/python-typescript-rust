@@ -1,42 +1,40 @@
-def calculate_sum(a: float, b: float) -> float:
-    # Incorrect indentation and unnecessary semicolon
-    return a + b
+import time
+
+# import pandas as pd
+import polars as pl
 
 
-class ExampleClass:
-    def __init__(self, name):
-        self.name = name  # Missing spaces around =
+def main():
+    start_time = time.time()
+    # Pandas
+    # df = pd.read_csv("test.csv")
+    # df["Subscription Date"] = pd.to_datetime(df["Subscription Date"])
+    # df_small = df[df["Subscription Date"] > "2021-01-01"]
+    # df_agg = df_small.groupby("Country").size().reset_index(name="counts")
+    # df_sort = df_agg.sort_values(by="counts")
+    # print(df_sort)
 
-    def say_hello(self):
-        print("Hello, " + self.name + "!")  # Prefer f-strings and add spaces for readability
+    # Polars Eager Execution
+    df = pl.read_csv("test.csv")
+    df_small = df.filter(pl.col("Subscription Date") > "2021-01-01")
+    df_agg = df_small.group_by("Country").agg([pl.len().alias("count")])
+    df_sort = df_agg.sort(by="count")
+    print(df_sort)
+
+    # Polars Lazy Execution
+    # q = (
+    #     pl.scan_csv("test.csv")
+    #     .filter(pl.col("Subscription Date") > "2021-01-01")
+    #     .group_by("Country")
+    #     .agg([pl.len().alias("count")])
+    #     .sort(by="count")
+    # )
+    # df = q.collect()
+    # print(df)
+
+    end_time = time.time()
+    print(f"Total Execution Time:{end_time - start_time} seconds")
 
 
-# Unused import
-
-
-# Comparing things incorrectly
-def check_values():
-    x = 5
-    if x == None:  # Should use `is` for None comparison
-        print("x is None")
-    else:
-        print("x is not None")
-
-
-calculate_sum(5, 10)
-example = ExampleClass("World")
-example.say_hello()
-check_values()
-
-# Inconsistent use of quotes
-single_quoted_string = "Hello, World"
-double_quoted_string = "Hello, World"
-
-# Unused variable
-unused_var = "I'm not used"
-
-
-# Mutable default argument
-def add_to_list(item, target_list=[]):
-    target_list.append(item)
-    return target_list
+if __name__ == "__main__":
+    main()

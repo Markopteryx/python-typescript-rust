@@ -1,0 +1,27 @@
+[package]
+name = "rust-lambda"
+version = "0.1.0"
+edition = "2021"
+
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = "debuginfo"
+
+
+[dependencies]
+aws-config = "1.1.4"
+aws-sdk-s3 = "1.14.0"
+polars = { version = "0.37.0", features = ["lazy", "aws"] }
+lambda_runtime = "0.9.1"
+serde = "1.0.136"
+tokio = { version = "1", features = ["macros"] }
+tracing = { version = "0.1", features = ["log"] }
+tracing-subscriber = { version = "0.3.18", default-features = false, features = [
+    "fmt",
+    "env-filter",
+    "json",
+] }

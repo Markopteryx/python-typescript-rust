@@ -1,4 +1,6 @@
 {
+  "git.autofetch": true,
+  "biome.lspBin": "./typescript/node_modules/.bin/biome",
   "[typescript]": {
     "editor.defaultFormatter": "biomejs.biome",
     "editor.formatOnSave": true,
@@ -7,6 +9,8 @@
       "source.organizeImports.biome": "explicit"
     }
   },
+  "python.analysis.typeCheckingMode": "strict",
+  "python.analysis.autoImportCompletions": true,
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.formatOnSave": true,
@@ -15,7 +19,14 @@
       "source.fixAll": "explicit"
     }
   },
-  "python.analysis.typeCheckingMode": "strict",
-  "git.autofetch": true,
-  "python.analysis.autoImportCompletions": true
+  "rust-analyzer.linkedProjects": ["./rust-lambda/Cargo.toml"],
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit",
+      "source.fixAll": "explicit"
+    }
+  },
+  "rust-analyzer.showUnlinkedFileNotification": false
 }
