@@ -20,6 +20,8 @@
     }
   },
   "rust-analyzer.linkedProjects": ["./rust-lambda/Cargo.toml"],
+  "rust-analyzer.showUnlinkedFileNotification": false,
+
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer",
     "editor.formatOnSave": true,
@@ -28,5 +30,9 @@
       "source.fixAll": "explicit"
     }
   },
-  "rust-analyzer.showUnlinkedFileNotification": false
+  "[terraform]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file"
+  }
 }

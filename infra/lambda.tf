@@ -2,13 +2,13 @@ resource "aws_iam_role" "lambda_role" {
   name = "lambda_execution_role"
 
   assume_role_policy = jsonencode({
-    "Version": "2012-10-17",
-    "Statement": [
+    "Version" : "2012-10-17",
+    "Statement" : [
       {
-        "Action": "sts:AssumeRole",
-        "Effect": "Allow",
-        "Principal": {
-          "Service": "lambda.amazonaws.com"
+        "Action" : "sts:AssumeRole",
+        "Effect" : "Allow",
+        "Principal" : {
+          "Service" : "lambda.amazonaws.com"
         }
       }
     ]
@@ -20,21 +20,21 @@ resource "aws_iam_policy" "lambda_additional_perms" {
   description = "Additional permissions for Lambda function"
 
   policy = jsonencode({
-    "Version": "2012-10-17",
-    "Statement": [
+    "Version" : "2012-10-17",
+    "Statement" : [
       {
-        "Action": "s3:*",
-        "Effect": "Allow",
-        "Resource": "*"
+        "Action" : "s3:*",
+        "Effect" : "Allow",
+        "Resource" : "*"
       },
       {
-        "Action": [
+        "Action" : [
           "logs:CreateLogGroup",
           "logs:CreateLogStream",
           "logs:PutLogEvents"
         ],
-        "Effect": "Allow",
-        "Resource": "arn:aws:logs:*:*:*"
+        "Effect" : "Allow",
+        "Resource" : "arn:aws:logs:*:*:*"
       }
     ]
   })
@@ -53,6 +53,7 @@ module "lambda_function" {
   runtime       = "provided.al2"
   architectures = ["arm64"]
   handler       = "bootstrap"
+  memory_size   = 256
 
   create_package         = false
   local_existing_package = "../rust-lambda/target/lambda/rust-lambda/bootstrap.zip"

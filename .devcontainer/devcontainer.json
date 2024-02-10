@@ -19,7 +19,7 @@
         "rust-lang.rust-analyzer",
         "serayuzgur.crates",
         "biomejs.biome",
-        "4ops.terraform"
+        "HashiCorp.terraform"
       ]
     }
   },
