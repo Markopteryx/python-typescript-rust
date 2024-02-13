@@ -10,6 +10,9 @@ python = "^3.12"
 pandas = "^2.2.0"
 pytest = "^8.0.0"
 polars = "^0.20.7"
+pyarrow = "^15.0.0"
+fastparquet = "^2024.2.0"
+pydantic = "^2.6.1"
 
 [tool.poetry.dev-dependencies]
 ruff = "^0.1.11"
@@ -22,8 +25,9 @@ pythonVersion = "3.12"
 [tool.ruff]
 line-length = 120
 indent-width = 4
+select = ["E4", "E7", "E9", "F"]
 ignore = ['F401']
-# select = ["ALL"]
+exclude = ["old"]
 
 [build-system]
 requires = ["poetry-core"]

@@ -9,7 +9,7 @@
       "source.organizeImports.biome": "explicit"
     }
   },
-  "python.analysis.typeCheckingMode": "strict",
+  "python.analysis.typeCheckingMode": "standard",
   "python.analysis.autoImportCompletions": true,
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff",
@@ -21,7 +21,6 @@
   },
   "rust-analyzer.linkedProjects": ["./rust-lambda/Cargo.toml"],
   "rust-analyzer.showUnlinkedFileNotification": false,
-
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer",
     "editor.formatOnSave": true,
