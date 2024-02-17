@@ -1,35 +1,52 @@
-import fs from "fs";
-import path from "path";
-import { promisify } from "util";
+import { PassThrough } from "stream";
+import { S3Client } from "@aws-sdk/client-s3";
+import { Upload } from "@aws-sdk/lib-storage";
+//@ts-ignore
+import { ParquetSchema, ParquetWriter } from "parquetjs-lite";
 
-interface User {
-	name: string;
-	age: number;
-}
+const client = new S3Client({ region: "ap-southeast-2" });
 
-function getUser(user: User) {
-	console.log("User details: ", user);
-}
+const schema = new ParquetSchema({
+	id: { type: "INT64" },
+	name: { type: "UTF8" },
+	age: { type: "INT32" },
+	balance: { type: "FLOAT" },
+});
 
-const newUser: User = {
-	name: "John Doe",
-	age: 30,
-};
+async function uploadParquetToS3() {
+	const passThrough = new PassThrough();
 
-getUser(newUser);
+	const writer = await ParquetWriter.openStream(schema, passThrough);
 
-class Product {
-	constructor(
-		public id: number,
-		public name: string,
-		public price: number,
-	) {}
-	displayProduct() {
-		console.log(
-			`Product ID: ${this.id} Name: ${this.name} Price: $${this.price}`,
-		);
+	const data = [];
+
+	for (let i = 0; i < 1000; i++) {
+		data.push({ id: i, name: `Name ${i}`, age: i, balance: i * 100 });
+	}
+
+	for (const row of data) {
+		await writer.appendRow(row);
+	}
+
+	await writer.close();
+
+	const uploader = new Upload({
+		client: client,
+		params: {
+			Bucket: "rust-s3",
+			Key: "your-object-key.parquet",
+			Body: passThrough,
+		},
+	});
+
+	try {
+		const result = await uploader.done();
+		console.log("Successfully uploaded:", result);
+	} catch (err) {
+		console.error("Error uploading:", err);
 	}
 }
 
-const product = new Product(1, "Laptop", 1500);
-product.displayProduct();
+uploadParquetToS3().catch((err) => {
+	console.error("Error:", err);
+});

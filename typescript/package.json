@@ -10,8 +10,13 @@
   "license": "ISC",
   "devDependencies": {
     "@biomejs/biome": "1.5.3",
-    "@types/node": "^20.11.16",
+    "@types/node": "^20.11.19",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.515.0",
+    "@aws-sdk/lib-storage": "^3.515.0",
+    "parquetjs-lite": "^0.8.7"
   }
 }
