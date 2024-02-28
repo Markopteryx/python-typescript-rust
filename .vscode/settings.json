@@ -33,5 +33,6 @@
     "editor.defaultFormatter": "hashicorp.terraform",
     "editor.formatOnSave": true,
     "editor.formatOnSaveMode": "file"
-  }
+  },
+  "remote.autoForwardPortsFallback": 0
 }

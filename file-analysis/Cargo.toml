@@ -1,0 +1,10 @@
+[package]
+name = "file-analysis"
+version = "0.1.0"
+edition = "2021"
+
+
+[dependencies]
+# walkdir = "2.4.0"
+# rayon = "1.8.1"
+jwalk = "0.8.1"

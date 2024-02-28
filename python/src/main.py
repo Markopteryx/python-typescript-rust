@@ -1,6 +1,5 @@
 import datetime as dt
 import logging
-import re
 import time
 from typing import Optional
 
@@ -17,6 +16,21 @@ class MetricParams(BaseModel):
     solar_system_install_date: Optional[str]
 
 
+class Metrics(BaseModel):
+    rawUsage: list[float]
+    rawSolar: list[float]
+    rawGridUsage: list[float]
+    rawControlledLoad: list[float]
+
+    plotPrice: list[float]
+    plotPerformance: list[float]
+    plotEmissisons: list[float]
+    plotControlledLoad: list[float]
+    plotGrid: list[float]
+    plotSolar: list[float]
+    plotSolarGenerated: list[float]
+
+
 def calculate_metrics(data: pl.DataFrame, params: MetricParams) -> None:
     solar = False
     if ("B1" in data.columns or "B3" in data.columns) and params.has_solar:
@@ -28,6 +42,8 @@ def calculate_metrics(data: pl.DataFrame, params: MetricParams) -> None:
         data = calculate_solar(data, params)
 
     hourly = resample(data)
+
+    compute_metrics(hourly, params)
 
     with pl.Config(tbl_cols=hourly.width):
         print(hourly)
@@ -76,7 +92,6 @@ def calculate_demand(df: pl.DataFrame) -> pl.DataFrame:
                 ((pl.col("Reactive Demand") ** 2 + pl.col("Grid Usage") ** 2) ** 0.5).alias("Apparent Demand")
             )
 
-            # Calculate Power Factor
             df = df.with_columns((pl.col("Grid Usage") / pl.col("Apparent Demand")).alias("Power Factor"))
 
     return df.drop(["Interval"])
@@ -135,6 +150,10 @@ def resample(df: pl.DataFrame) -> pl.DataFrame:
     )
 
     return hourly
+
+
+def compute_metrics(df: pl.DataFrame, params: MetricParams) -> pl.DataFrame:
+    return df
 
 
 def main():
