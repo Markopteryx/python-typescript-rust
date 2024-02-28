@@ -19,7 +19,10 @@
       "source.fixAll": "explicit"
     }
   },
-  "rust-analyzer.linkedProjects": ["./rust-lambda/Cargo.toml"],
+  "rust-analyzer.linkedProjects": [
+    "./rust-lambda/Cargo.toml",
+    "./file-analysis/Cargo.toml"
+  ],
   "rust-analyzer.showUnlinkedFileNotification": false,
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer",
