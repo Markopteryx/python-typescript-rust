@@ -9,7 +9,6 @@
         "charliermarsh.ruff",
         "esbenp.prettier-vscode",
         "exodiusstudios.comment-anchors",
-        "GitHub.copilot",
         "GitLab.gitlab-workflow",
         "ms-python.python",
         "ms-python.vscode-pylance",

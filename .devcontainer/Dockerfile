@@ -30,4 +30,6 @@ COPY python/poetry.loc[k] .
 
 RUN pip3 install cargo-lambda
 
+RUN npm install --global tsx
+
 RUN poetry config virtualenvs.create false && poetry install --no-interaction

@@ -12,3 +12,5 @@ infra/terraform.tfstate
 python/old/
 folder_structure.csv
 gg.py
+
+*.mp4
